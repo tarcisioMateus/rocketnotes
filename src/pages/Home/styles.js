@@ -32,7 +32,7 @@ export const Search = styled.div`
 
 export const Content = styled.div`
   grid-area: content;
-  background-color: yellow;
+  padding: 6.4rem;
 ` 
 
 export const New = styled.button`
