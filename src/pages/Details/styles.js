@@ -14,6 +14,7 @@ export const Container = styled.div`
     padding: 6.4rem 0;
   }
 `
+
 export const Content = styled.div`
   width: 55rem;
   margin: 0 auto;
@@ -38,8 +39,13 @@ export const Content = styled.div`
     margin-bottom: 3.8rem;
   }
 
+  #tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   >button:last-child {
-    margin-top: 11.3rem;
+    margin-top: 11rem;
   }
 `
 

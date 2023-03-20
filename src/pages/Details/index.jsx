@@ -33,8 +33,8 @@ export function Details() {
           </Section>
           <Section title = 'Tags'>
             <div id="tags">
-            <Tag title={'express'}/>
-            <Tag title={'node.js'}/>
+              <Tag title={'express'}/>
+              <Tag title={'node.js'}/>
             </div>
           </Section>
           <Button title = 'Return'/>
