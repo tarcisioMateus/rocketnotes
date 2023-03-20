@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.button`
   width: 100%;
   height: 11.2rem;
   border-radius: 1rem;
@@ -15,5 +15,10 @@ export const Container = styled.div`
     line-height: 3.2rem;
     text-align: left;
     margin-bottom: 2.4rem;
+  }
+
+  #tags {
+    display: flex;
+    align-items: flex-start;
   }
 `
