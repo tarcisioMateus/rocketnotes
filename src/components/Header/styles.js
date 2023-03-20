@@ -28,7 +28,7 @@ export const Profile = styled.div`
     display: flex;
     flex-direction: column;
 
-    spam {
+    span {
       font-size: 1.4rem;
       line-height: 1.8rem;
       color: ${ ({theme}) => theme .COLORS.GRAY_100};

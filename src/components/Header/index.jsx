@@ -10,7 +10,7 @@ export function Header() {
         src = 'https://github.com/tarcisioMateus.png'
         alt = "Picture from user"/>
         <div>
-          <spam>Welcome,</spam>
+          <span>Welcome,</span>
           <strong>Tarcísio Mateus</strong>
         </div>
       </Profile>

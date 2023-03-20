@@ -19,6 +19,7 @@ export default createGlobalStyle`
     color: ${ ({theme}) => theme.COLORS.WHITE };
     font-family: 'Roboto Slab', serif;
     font-size: 1.6rem;
+    font-weight: 400;
     outline: none;
   }
 
