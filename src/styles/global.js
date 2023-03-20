@@ -15,6 +15,18 @@ export default createGlobalStyle`
     background-color: ${ ({theme}) => theme.COLORS.BACKGROUND_800 };
   }
 
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: none;
+  }
+
   body, input, textarea, button {
     color: ${ ({theme}) => theme.COLORS.WHITE };
     font-family: 'Roboto Slab', serif;

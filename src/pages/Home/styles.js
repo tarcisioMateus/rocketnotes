@@ -26,7 +26,8 @@ export const Menu = styled.ul`
 
 export const Search = styled.div`
   grid-area: search;
-  background-color: violet;
+  padding: 6.4rem;
+  padding-bottom: 0;
 ` 
 
 export const Content = styled.div`
