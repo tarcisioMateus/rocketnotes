@@ -1,11 +1,11 @@
 import { Container } from "./styles";
 
-export function Input({ icon: Icon, lable, ...rest}) {
+export function Input({ icon: Icon, label, ...rest}) {
   return (
     <Container>
-      <label htmlFor={lable} className='sr-only'>{lable}</label>
+      <label htmlFor={label} className='sr-only'>{label}</label>
       { Icon && <Icon/>}
-      <input {...rest} id={lable}/>
+      <input {...rest} id={label}/>
     </Container>
   )
 }

@@ -23,7 +23,7 @@ export function Home() {
         <li><TextButton title='react'/></li>
       </Menu>
       <Search>
-        <Input placeholder='Search by title' icon={ RiSearchLine } lable='Search by title'/>
+        <Input placeholder='Search by title' icon={ RiSearchLine } label='Search by title'/>
       </Search>
       <Content>
         <Section title='My notes'>
