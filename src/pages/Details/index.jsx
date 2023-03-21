@@ -13,7 +13,7 @@ export function Details() {
 
       <main>
         <Content>
-          <TextButton title = 'Delete Note'/>
+          <TextButton title = 'Delete Note' isActive/>
           <h1>Gettings Started - React</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. 
