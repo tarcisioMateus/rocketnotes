@@ -14,6 +14,10 @@ export const Container = styled.div`
     resize: none;
 
     padding: 2rem;
-    color: ${ ({theme}) => theme.COLORS.GRAY_300};
+    color: ${ ({theme}) => theme.COLORS.WHITE};
+
+    &::placeholder {
+      color: ${ ({theme}) => theme.COLORS.GRAY_300};
+    }
   }
 `

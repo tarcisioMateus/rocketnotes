@@ -1,6 +1,6 @@
 import { Container } from './styles'
 
-export function TextArea({ title, label, ...rest}) {
+export function TextArea({label, ...rest}) {
   return (
     <Container>
       <label htmlFor={label} className='sr-only'>{label}</label>
