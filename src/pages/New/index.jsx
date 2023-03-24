@@ -3,6 +3,7 @@ import { TextButton } from '../../components/TextButton'
 import { Input } from '../../components/Input'
 import { TextArea } from '../../components/TextArea'
 import { Section } from '../../components/Section'
+import { Item } from '../../components/Item'
 import { Button } from '../../components/Button'
 
 import { Container, Form } from './styles'
@@ -19,8 +20,14 @@ export function New() {
         <Form>
           <Input placeholder='Title' label='Title'/>
           <TextArea placeholder='Details' label='Details'/>
-          <Section title='Links'></Section>
-          <Section title='Tags'></Section>
+          <Section title='Links'>
+            <Item value='https://www.rocketseat.com.br/'/>
+            <Item placeholder='New link' isNew/>
+          </Section>
+          <Section title='Tags'>
+            <Item value='React'/>
+            <Item placeholder='New tag' isNew/>
+          </Section>
           <Button title='Save'/>
         </Form>
       </main>
