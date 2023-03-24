@@ -11,6 +11,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
   >input {
     width: 100%;
     height: 100%;
