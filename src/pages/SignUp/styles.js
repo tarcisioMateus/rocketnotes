@@ -36,8 +36,10 @@ export const Form = styled.form`
     margin-bottom: 2.4rem;
   }
 
-  >button:last-of-type {
+  >a:last-of-type {
+    display: block;
     margin-top: 12.4rem;
+    color: ${ ({theme}) => theme.COLORS.ORANGE };
   }
 `
 

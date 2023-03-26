@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom'
+
 import { Header } from '../../components/Header'
-import { TextButton } from '../../components/TextButton'
 import { Input } from '../../components/Input'
 import { TextArea } from '../../components/TextArea'
 import { Section } from '../../components/Section'
@@ -18,7 +19,7 @@ export function New() {
 
           <header>
             <h1>Create Note</h1>
-            <TextButton title='return'/>
+            <Link to='/'>return</Link>
           </header>
 
           <Form>

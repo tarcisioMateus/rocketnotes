@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
@@ -51,7 +52,7 @@ export const Content = styled.div`
   padding: 6.4rem;
 ` 
 
-export const New = styled.button`
+export const New = styled(Link)`
   grid-area: new;
   background-color: ${ ({theme}) => theme.COLORS.ORANGE};
   border: none;

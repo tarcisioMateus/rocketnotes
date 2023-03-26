@@ -5,7 +5,7 @@ import { Container, Profile, Button } from "./styles";
 export function Header() {
   return (
     <Container>
-      <Profile>
+      <Profile to='/profile'>
         <img
         src = 'https://github.com/tarcisioMateus.png'
         alt = "Picture from user"/>

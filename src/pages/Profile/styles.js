@@ -9,12 +9,11 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
-    >button {
-      background: none;
-      border: none;
-     
+    >a {
+
       >svg {
         font-size: 2rem;
+        color: ${ ({theme}) => theme.COLORS.WHITE };
       }
     }
   }

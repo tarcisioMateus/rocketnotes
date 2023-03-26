@@ -28,6 +28,10 @@ export const Content = styled.div`
       font-size: 3.6rem;
       line-height: 4.7rem;
     }
+
+    >a {
+      color: ${ ({theme}) => theme.COLORS.GRAY_100 };
+    }
   }
 `
 

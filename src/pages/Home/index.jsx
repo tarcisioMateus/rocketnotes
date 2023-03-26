@@ -27,11 +27,11 @@ export function Home() {
       </Search>
       <Content>
         <Section title='My notes'>
-          <NoteItem title='Middleware' tags={[{id: 1, title: 'express'}, {id: 2, title: 'node.js'}]}/>
-          <NoteItem title='Middleware' tags={[{id: 1, title: 'express'}, {id: 2, title: 'node.js'}]}/>
+          <NoteItem to='/details/1' title='Middleware' tags={[{id: 1, title: 'express'}, {id: 2, title: 'node.js'}]}/>
+          <NoteItem to='/details/2' title='Middleware' tags={[{id: 1, title: 'express'}, {id: 2, title: 'node.js'}]}/>
         </Section>
       </Content>
-      <New>
+      <New to='/new'>
         <FiPlus/>
         <p>Create Note</p>
       </New>

@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom'
 import { FiMail, FiLock } from 'react-icons/fi'
 
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
-import { TextButton } from '../../components/TextButton'
 
 import { Container, Form, Header, Img} from "./styles";
 
@@ -20,7 +20,7 @@ export function SignIn() {
         <Input type='email' placeholder='E-mail' label='E-mail' icon={FiMail}/>
         <Input type='password' placeholder='Password' label='Password' icon={FiLock}/>
         <Button title='Sign In'/>
-        <TextButton title='Sign Up' isActive/>
+        <Link to='/'>Sign Up</Link>
       </Form>
 
       <Img/>

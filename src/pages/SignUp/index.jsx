@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FiMail, FiLock, FiUser } from 'react-icons/fi'
 
 import { Input } from '../../components/Input'
@@ -22,7 +23,7 @@ export function SignUp() {
         <Input type='email' placeholder='E-mail' label='E-mail' icon={FiMail}/>
         <Input type='password' placeholder='Password' label='Password' icon={FiLock}/>
         <Button title='Create'/>
-        <TextButton title='Return to login' isActive/>
+        <Link to='/login'>Return to login</Link>
       </Form>
 
     </Container>
