@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import { api } from '../services'
 
 const AuthContext = createContext({})
@@ -24,6 +24,20 @@ function AuthProvider( { children } ) {
       }
     }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('@rocketNotes:token')
+    const user = localStorage.getItem('@rocketNotes:user')
+
+    if(token && user) {
+      api.defaults.headers.common['Authorization'] = ` Bearer ${token}`
+    }
+
+    setData({
+      token,
+      user: JSON.parse(user)
+    })
+  }, [])
 
   return (
     <AuthContext.Provider value={{ signIn, user: data.user}}>
