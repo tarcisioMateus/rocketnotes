@@ -22,7 +22,7 @@ export function SignUp() {
     api.post('/users', {name, email, password}).then(
       () => {
         alert('successfully registered user!')
-        navigate('/login')
+        navigate('/')
       }
     ).catch( error => {
       if (error.response) {
@@ -52,7 +52,7 @@ export function SignUp() {
           onChange={ e => setPassword(e.target.value)}/>
         <Button title='Create'
           onClick={handleSignUp}/>
-        <Link to='/login'>Return to login</Link>
+        <Link to='/'>Return to login</Link>
       </Form>
 
     </Container>

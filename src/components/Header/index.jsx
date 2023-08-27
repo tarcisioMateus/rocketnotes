@@ -1,8 +1,19 @@
+import { useAuth } from '../../hooks/auth'
+import { useNavigate } from 'react-router-dom'
+
 import { RiShutDownLine } from 'react-icons/ri'
 
 import { Container, Profile, Button } from "./styles";
 
 export function Header() {
+  const { signOut } = useAuth()
+  const navigate = useNavigate()
+
+  function handleSignOut() {
+    navigate('/')
+    signOut()
+  }
+
   return (
     <Container>
       <Profile to='/profile'>
@@ -15,7 +26,8 @@ export function Header() {
         </div>
       </Profile>
 
-      <Button>
+      <Button 
+        onClick={handleSignOut}>
         <RiShutDownLine/>
       </Button>
     </Container>

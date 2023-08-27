@@ -10,13 +10,13 @@ import { Button } from '../../components/Button'
 import { Container, Form, Header, Img} from "./styles";
 
 export function SignIn() {
-  const { SignIn } = useAuth()
+  const { signIn } = useAuth()
   
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   async function handleSignIn() {
-    await SignIn({ email, password})
+    await signIn({ email, password})
   }
 
   return (
@@ -35,7 +35,7 @@ export function SignIn() {
           onChange={ e => setPassword(e.target.value)}/>
         <Button title='Sign In'
           onClick={handleSignIn}/>
-        <Link to='/'>Sign Up</Link>
+        <Link to='/signup'>Sign Up</Link>
       </Form>
 
       <Img/>
