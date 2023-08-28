@@ -5,7 +5,7 @@ import { Container } from "./styles"
 
 export function Item({isNew = false, onClick, ...rest}) {
   return (
-    <Container $isnew = {isNew.toString()}>
+    <Container $isnew = {isNew}>
       <input readOnly = {!isNew} {...rest}/>
       <button type='button' onClick = {onClick} >
         { isNew ? <FiPlus/> : <RiCloseLine/> }

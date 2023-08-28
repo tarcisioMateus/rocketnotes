@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { api } from '../../services'
 
 import { Header } from '../../components/Header'
+import { TextButton } from '../../components/TextButton'
 import { Input } from '../../components/Input'
 import { TextArea } from '../../components/TextArea'
 import { Section } from '../../components/Section'
@@ -18,6 +20,8 @@ export function New() {
   const [newTag, setNewTag] = useState("")
   const [links, setLinks] = useState([])
   const [newLink, setNewLink] = useState("")
+
+  const navigate = useNavigate()
 
   function handleAddTag() {
     if (!newTag) return
@@ -37,7 +41,24 @@ export function New() {
     setLinks( prev => prev.filter( link => link !== deleted))
   }
 
-  
+  async function handleSaveNote() {
+    if (!title) return alert('Can not create a note without a title')
+    if (newLink) return alert('there is an open link, clean the field or add it, to save')
+    if (newTag) return alert('there is an open tag, clean the field or add it, to save')
+
+    try {
+      await api.post('/notes', { title, description, tags, links })
+      alert('note successfully created')
+      navigate(-1)
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert('unable to create note')
+      }
+    }
+  }
+
   return (
     <Container>
       <Header/>
@@ -47,7 +68,8 @@ export function New() {
 
           <header>
             <h1>Create Note</h1>
-            <Link to='/'>return</Link>
+            <TextButton title='return' 
+              onClick={() => navigate(-1)}/>
           </header>
 
           <Form>
@@ -81,7 +103,8 @@ export function New() {
                   onClick={handleAddTag} onChange={ e => setNewTag(e.target.value)}/>
               </div>
             </Section>
-            <Button title='Save'/>
+            <Button title='Save' 
+              onClick={handleSaveNote}/>
           </Form>
 
         </Content>
