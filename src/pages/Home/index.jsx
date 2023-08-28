@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react'
+import { api } from '../../services'
+
 import { RiSearchLine } from 'react-icons/ri'
 import { FiPlus } from 'react-icons/fi'
 
@@ -10,6 +13,29 @@ import { NoteItem } from '../../components/NoteItem'
 import { Container, Brand, Menu, Search, Content, New} from './styles'
 
 export function Home() {
+  const [tags, setTags] = useState([])
+  const [selectedTags, setSelectedTags] = useState([])
+
+  function handleSelectedTag(tagName) {
+    if (tagName == 'all') return setSelectedTags([])
+
+    const alreadySelected = selectedTags.includes(tagName)
+    if (alreadySelected) {
+      setSelectedTags( prev => prev.filter(tag => tag !== tagName))
+    } else {
+      setSelectedTags( prev => [...prev, tagName])
+    }
+  }
+
+  useEffect(() => {
+    async function fetchTags() {
+      const response = await api.get('/tags')
+      setTags(response.data)
+    }
+
+    fetchTags()
+  }, [])
+
   return (
     <Container>
       <Brand>
@@ -17,10 +43,19 @@ export function Home() {
       </Brand>
       <Header/>
       <Menu>
-        <li><TextButton title='all' isActive/></li>
-        <li><TextButton title='frontend'/></li>
-        <li><TextButton title='node'/></li>
-        <li><TextButton title='react'/></li>
+        <li>
+          <TextButton title='all' 
+            onClick={() => handleSelectedTag('all')} isActive={selectedTags.length == 0}/>
+        </li>
+        {
+          tags &&
+          tags.map((tag, index) => {
+            return <li key={index}>
+                <TextButton title={tag}
+                  onClick={() => handleSelectedTag(tag)} isActive={ selectedTags.includes(tag)}/>
+              </li>
+          })
+        }
       </Menu>
       <Search>
         <Input placeholder='Search by title' icon={ RiSearchLine } label='Search by title'/>
