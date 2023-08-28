@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 
+import { api } from '../../services' 
+import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
 import { FiArrowLeft, FiCamera, FiUser, FiMail, FiLock } from 'react-icons/fi'
 
 import { Input } from '../../components/Input'
@@ -17,13 +19,24 @@ export function Profile () {
   const [currentPassword, setCurrentPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
 
+  const [avatar, setAvatar] = useState( user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder)
+  const [avatarFile, setAvatarFile] = useState(null)
+
   async function handleUpdate () {
     const update = {
       name, email, currentPassword, newPassword
     }
 
     const newUser =  Object.assign(user, update)
-    await updateUser({ user: newUser })
+    await updateUser({ user: newUser, avatarFile })
+  }
+
+  function handleUploadAvatarFile(event) {
+    const file = event.target.files[0]
+    setAvatarFile(file)
+
+    const avatarView = URL.createObjectURL(file)
+    setAvatar(avatarView)
   }
 
   return (
@@ -36,12 +49,13 @@ export function Profile () {
         <Form>
           <Picture>
             <img
-              src = 'https://github.com/tarcisioMateus.png'
+              src = {avatar}
               alt = "Picture from user"/>
             
             <label htmlFor='choose picture'>
               <FiCamera/>
-              <input type='file' id='choose picture' className='sr-only'></input>
+              <input type='file' id='choose picture' className='sr-only'
+                onChange={ event => handleUploadAvatarFile(event)}></input>
             </label>
           </Picture>
 
