@@ -31,6 +31,24 @@ function AuthProvider( { children } ) {
     setData({})
   }
 
+  async function updateUser({user}) {
+    try {
+      
+      await api.put('/users', user)
+      localStorage.setItem('@rocketNotes:user', JSON.stringify(user))
+      setData({
+        token: data.token,
+        user
+      })
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert('unable to create account')
+      }
+    }
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('@rocketNotes:token')
     const user = localStorage.getItem('@rocketNotes:user')
@@ -46,7 +64,7 @@ function AuthProvider( { children } ) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ signIn, signOut, user: data.user}}>
+    <AuthContext.Provider value={{ signIn, signOut, updateUser, user: data.user}}>
       {children}
     </AuthContext.Provider>
   )
