@@ -3,11 +3,11 @@ import { RiCloseLine } from 'react-icons/ri'
 
 import { Container } from "./styles"
 
-export function Item({isNew = false, ...rest}) {
+export function Item({isNew = false, onClick, ...rest}) {
   return (
-    <Container isNew = {isNew}>
+    <Container $isnew = {isNew.toString()}>
       <input readOnly = {!isNew} {...rest}/>
-      <button type='button'>
+      <button type='button' onClick = {onClick} >
         { isNew ? <FiPlus/> : <RiCloseLine/> }
       </button>
     </Container>

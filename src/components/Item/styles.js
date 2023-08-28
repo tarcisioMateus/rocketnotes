@@ -4,9 +4,9 @@ export const Container = styled.div`
   width: 100%;
   height: 5.6rem;
 
-  background-color: ${ ({theme, isNew}) => isNew ? 'transparent' : theme.COLORS.BACKGROUND_900 };
+  background-color: ${ ({theme, $isnew}) => $isnew ? 'transparent' : theme.COLORS.BACKGROUND_900 };
   border-radius: 1rem;
-  border: ${ ({theme, isNew}) => isNew ? `2px dashed ${theme.COLORS.GRAY_300}` : 'none' };;
+  border: ${ ({theme, $isnew}) => $isnew ? `2px dashed ${theme.COLORS.GRAY_300}` : 'none' };;
 
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@ export const Container = styled.div`
 
     >svg {
       font-size: 2.4rem;
-      color: ${ ({theme, isNew}) => isNew ? theme.COLORS.ORANGE : theme.COLORS.RED };
+      color: ${ ({theme, $isnew}) => $isnew ? theme.COLORS.ORANGE : theme.COLORS.RED };
     }
   }
 `
