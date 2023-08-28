@@ -15,6 +15,8 @@ import { Container, Brand, Menu, Search, Content, New} from './styles'
 export function Home() {
   const [tags, setTags] = useState([])
   const [selectedTags, setSelectedTags] = useState([])
+  const [search, setSearch] = useState('')
+  const [notes, setNotes] = useState([])
 
   function handleSelectedTag(tagName) {
     if (tagName == 'all') return setSelectedTags([])
@@ -35,6 +37,15 @@ export function Home() {
 
     fetchTags()
   }, [])
+
+  useEffect(() => {
+    async function fetchNotes() {
+      const response = await api.get(`/notes?title=${search}&tags=${selectedTags}`)
+      setNotes(response.data)
+    }
+
+    fetchNotes()
+  }, [selectedTags, search])
 
   return (
     <Container>
@@ -58,12 +69,18 @@ export function Home() {
         }
       </Menu>
       <Search>
-        <Input placeholder='Search by title' icon={ RiSearchLine } label='Search by title'/>
+        <Input placeholder='Search by title' icon={ RiSearchLine } label='Search by title'
+          onChange={ e => setSearch(e.target.value)} value={search}/>
       </Search>
       <Content>
         <Section title='My notes'>
-          <NoteItem to='/details/1' title='Middleware' tags={[{id: 1, title: 'express'}, {id: 2, title: 'node.js'}]}/>
-          <NoteItem to='/details/2' title='Middleware' tags={[{id: 1, title: 'express'}, {id: 2, title: 'node.js'}]}/>
+          {
+            notes &&
+            notes.map( note => {
+              return <NoteItem key={note.id}
+                to={`/details/${note.id}`} title={note.title} tags={note.tags}/>
+            })
+          }
         </Section>
       </Content>
       <New to='/new'>

@@ -44,6 +44,7 @@ export function New() {
   async function handleSaveNote() {
     if (!title) return alert('Can not create a note without a title')
     if (newLink) return alert('there is an open link, clean the field or add it, to save')
+    if (tags.length == 0) return alert('Can not create a note without tags')
     if (newTag) return alert('there is an open tag, clean the field or add it, to save')
 
     try {
