@@ -9,8 +9,10 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
-    >a {
-
+    >button {
+      background: none;
+      border: none;
+      
       >svg {
         font-size: 2rem;
         color: ${ ({theme}) => theme.COLORS.WHITE };

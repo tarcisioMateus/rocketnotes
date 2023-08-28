@@ -11,12 +11,15 @@ import { Section} from '../../components/Section'
 import { NoteItem } from '../../components/NoteItem'
 
 import { Container, Brand, Menu, Search, Content, New} from './styles'
+import { useNavigate } from 'react-router-dom'
 
 export function Home() {
   const [tags, setTags] = useState([])
   const [selectedTags, setSelectedTags] = useState([])
   const [search, setSearch] = useState('')
   const [notes, setNotes] = useState([])
+
+  const navigate = useNavigate()
 
   function handleSelectedTag(tagName) {
     if (tagName == 'all') return setSelectedTags([])
@@ -61,7 +64,7 @@ export function Home() {
         {
           tags &&
           tags.map((tag, index) => {
-            return <li key={index}>
+            return <li key={String(index)}>
                 <TextButton title={tag}
                   onClick={() => handleSelectedTag(tag)} isActive={ selectedTags.includes(tag)}/>
               </li>
@@ -77,8 +80,9 @@ export function Home() {
           {
             notes &&
             notes.map( note => {
-              return <NoteItem key={note.id}
-                to={`/details/${note.id}`} title={note.title} tags={note.tags}/>
+              return <NoteItem key={String(note.id)}
+                title={note.title} tags={note.tags} 
+                onClick={() => navigate(`/details/${note.id}`)}/>
             })
           }
         </Section>

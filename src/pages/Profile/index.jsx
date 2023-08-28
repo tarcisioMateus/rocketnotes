@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 
 import { api } from '../../services' 
@@ -22,6 +22,8 @@ export function Profile () {
   const [avatar, setAvatar] = useState( user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder)
   const [avatarFile, setAvatarFile] = useState(null)
 
+  const navigate = useNavigate()
+
   async function handleUpdate () {
     const update = {
       name, email, currentPassword, newPassword
@@ -42,7 +44,9 @@ export function Profile () {
   return (
     <Container>
       <header>
-        <Link to='/'> <FiArrowLeft/> </Link>
+        <button onClick={() => navigate(-1)}>
+        <FiArrowLeft/>
+        </button>
       </header>
 
       <main>
